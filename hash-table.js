@@ -31,10 +31,20 @@ class HashTable {
   }
 
   insertNoCollisions(key, value) {
-    let index = this.hashMod(key)
-    let bucket = this.data[index];
-    if (bucket) {
-      throw new Error(`hash collision or same key/value pair already exists!`);
+    // const newTable = new HashTable();
+    // newTable.hashMod(key);
+    // newTable.insert(key, value)
+
+    // for(let i = 0; i < this.data.length; i++){
+    //   if(this.data[i] && this.data[i].key === key){
+    //     throw new Error("Collision")
+    //   }
+    // }
+
+    let index = this.hashMod(key);
+    let bucket = this.data[index]
+    if(bucket){
+      throw new Error('hash collision or same key/value pair already exists!')
     }
     this.data[index] = new KeyValuePair(key, value);
     this.count++;
