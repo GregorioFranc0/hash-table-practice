@@ -56,9 +56,18 @@ class HashTable {
     let index = this.hashMod(key);
     let bucket = this.data[index];
     let node = new KeyValuePair(key, value);
-    if (bucket) {
-      node.next = bucket;
+    let curr = this.data[index];
+    if (curr) {
+      while (curr) {
+        if (curr.key === key) {
+          curr.value = value;
+          return;
+        }
+        curr = curr.next;
+      }
+
     }
+    node.next = this.data[index];
     this.data[index] = node;
     this.count++;
   }
