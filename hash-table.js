@@ -51,7 +51,7 @@ class HashTable {
   }
 
   insertWithHashCollisions(key, value) {
-    // Your code here
+
   }
 
   insert(key, value) {
