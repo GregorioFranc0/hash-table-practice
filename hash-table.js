@@ -10,16 +10,24 @@ class KeyValuePair {
 
 class HashTable {
 
-  constructor(numBuckets = 4) {
-    // Your code here
+  constructor(numBuckets = 4,) {
+    this.count = 0;
+    this.capacity = numBuckets;
+    this.data = new Array(numBuckets).fill(null);
+
   }
 
   hash(key) {
-    // Your code here
+    let hex = sha256(key);
+    let shortHex = hex.slice(0, 8);
+    let int = parseInt(shortHex, 16);
+    return int;
   }
 
   hashMod(key) {
-    // Your code here
+    let hash = this.hash(key);
+    let index = hash % this.capacity;
+    return index;
   }
 
   insertNoCollisions(key, value) {
@@ -36,5 +44,5 @@ class HashTable {
 
 }
 
-
+//console.log(capacity)
 module.exports = HashTable;
